@@ -4,9 +4,33 @@
         <servlet-name>Payment_Servlet</servlet-name>
         <servlet-class>Servlet.Payment_Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>Servlet.login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>Servlet.register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Claim</servlet-name>
+        <servlet-class>Servlet.Claim</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Payment_Servlet</servlet-name>
         <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Claim</servlet-name>
+        <url-pattern>/Claim</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
