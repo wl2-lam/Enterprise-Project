@@ -3,21 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import regular_class.JdbcUserQry;
-
+import model.JdbcQry;
+import java.sql.*;
 /**
  *
  * @author wl2-lam
  */
-public class register extends HttpServlet {
+public class login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +33,28 @@ public class register extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String data[]= new String [2];
-        data[0]=request.getParameter("username");
-        data[1]=request.getParameter("password");
-        JdbcUserQry j = new JdbcUserQry();
-        if (j.exists(data[0])) {
-            PrintWriter out = response.getWriter();
-             out.print("Sorry the username has been taken"); 
-        }else{
-           j.insert(data);
-           response.sendRedirect("home.html");
+        
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        
+         
+        JdbcQry j = new JdbcQry((Connection) request.getServletContext().getAttribute("connection"));
+        boolean b = j.validateLogin(username, password);
+        if (b==true) {
+            boolean a = j.checkAdmin(username);
+            if(a==true){
+             response.sendRedirect("home.html");
+        } else{
+                response.sendRedirect("home.html");
+            } }
+            else{
+              response.sendRedirect("error.html");
         }
+       
+        
+        
         
     }
 
@@ -57,7 +70,11 @@ public class register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +88,11 @@ public class register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
