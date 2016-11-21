@@ -3,14 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package regular_class;
+package model;
 
 /**
  *
  * @author wl2-lam
  */
-public class Creditcheck {
+import java.sql.*;
+public class Payment {
     private final int[] d = new int[16];
+    private int id;
+    private String memID;
+    private String typeOfPayment;
+    private double amount;
+    private Date date;
+    private String status;
     
     public boolean credircheck(String s){
           try {
@@ -46,5 +53,56 @@ public class Creditcheck {
         }
          
     }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Payment() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getTypeOfPayment() {
+        return typeOfPayment;
+    }
+
+    public void setTypeOfPayment(String typeOfPayment) {
+        this.typeOfPayment = typeOfPayment;
+    }
+
+    public String getMemID() {
+        return memID;
+    }
+
+    public void setMemID(String memID) {
+        this.memID = memID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     
 }

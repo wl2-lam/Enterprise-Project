@@ -69,7 +69,7 @@
             <input type="submit" value="Submit"><br>
 
             <input type="submit" value="login as admin" name="admin"><br>
-            <input type="submit" value="Create New account" name="register">
+            <a href="register.jsp">Register a new account</a>
         </form>
         
     </body>

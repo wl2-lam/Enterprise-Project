@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+package Controller;
 
+import model.Payment;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author wl2-lam
  */
-public class Claim extends HttpServlet {
+public class Payment_Servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,9 +32,27 @@ public class Claim extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        float amount = Float.parseFloat(request.getParameter("amount"));
-        String reason = request.getParameter("reason");
-    }
+        int[] d = new int[16];
+        String temp = "";
+      
+        String cardnum = request.getParameter("cardnum");
+        String name =request.getParameter("name");
+        temp =request.getParameter("month");
+        int month =Integer.parseInt(temp);
+        String Year = request.getParameter("Year");
+        int year = Integer.parseInt(Year);
+        Payment c = new Payment();
+        boolean b = c.credircheck(cardnum);
+        Calendar now = Calendar.getInstance();
+        
+        if (month>=now.get(Calendar.MONTH) + 1&&b==true) {
+            response.sendRedirect("success.jsp");
+        }else{
+            response.sendRedirect("payment_error.jsp");
+        }
+        
+        }      
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
