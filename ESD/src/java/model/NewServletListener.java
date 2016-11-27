@@ -8,6 +8,8 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -32,6 +34,12 @@ public class NewServletListener implements ServletContextListener {
             sc.setAttribute("error", e);
         }
         sc.setAttribute("connection", conn);
+        JdbcQry j = new JdbcQry(conn);
+     try {
+         j.connect();
+     } catch (SQLException ex) {
+         Logger.getLogger(NewServletListener.class.getName()).log(Level.SEVERE, null, ex);
+     }
        
     }
 

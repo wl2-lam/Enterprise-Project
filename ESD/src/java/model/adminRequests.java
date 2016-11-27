@@ -19,7 +19,6 @@ public class adminRequests {
     Connection connection = null;
     Statement statement = null;
     ResultSet rs = null;
-    String db = "MyUse";
     ResultSet resultSet;
     LocalDate now = LocalDate.now();
     String startOfYear = now.with(TemporalAdjusters.firstDayOfYear()).toString();
@@ -97,17 +96,7 @@ public class adminRequests {
         
         return ""+total;
     }
-     public void connect(){
-    Connection conn = null;
-                try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db.trim(), "root", "");
-        }
-        catch(ClassNotFoundException | SQLException e){
-            
-        }
-        connection = conn;
-    }
+     
     public void executeQuery(String query) throws SQLException{
         statement = connection.createStatement();
         rs = statement.executeQuery(query);
