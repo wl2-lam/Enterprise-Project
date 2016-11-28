@@ -24,7 +24,7 @@ public class NewServletListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext sc = sce.getServletContext();
-        String db = sc.getInitParameter("dbname");
+        String db = "xyz_assoc";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
