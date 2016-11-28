@@ -23,7 +23,7 @@ public class JdbcQry {
     Connection connection = null;
     Statement statement = null;
     ResultSet rs = null;
-    String db = "MyUse";
+    String db = "xyz_assoc";
     ResultSet resultSet;
     LocalDate now = LocalDate.now();
     String startOfYear = now.with(TemporalAdjusters.firstDayOfYear()).toString();
