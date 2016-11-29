@@ -5,22 +5,19 @@
  */
 package Controller;
 
-import model.Payment;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.JdbcQry;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author wl2-lam
+ * @author Tim Lam
  */
-public class Payment_Servlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,38 +31,14 @@ public class Payment_Servlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int[] d = new int[16];
-        String temp = "";
-      
-        String cardnum = request.getParameter("cardnum");
-        String name =request.getParameter("name");
-        float amount = Float.parseFloat(request.getParameter("amount"));
-        String type = "card";
-        login l = new login();
-        String username=l.getUsername();
-        Payment p = new Payment();
-        p.setAmount(amount);
-        p.setMemID(username);
-        p.setTypeOfPayment(type);
-        JdbcQry j= new JdbcQry( (Connection) request.getServletContext().getAttribute("connection")); 
-                
-        temp =request.getParameter("month");
-        int month =Integer.parseInt(temp);
-        String Year = request.getParameter("Year");
-        int year = Integer.parseInt(Year);
-        Payment c = new Payment();
-        boolean b = c.credircheck(cardnum);
-        Calendar now = Calendar.getInstance();
-        
-        if (b==true) {
-            j.makePayment(p);
-            response.sendRedirect("success.jsp");
-        }else{
-            response.sendRedirect("payment_error.jsp");
-        }
-        
-        }      
-    
+        PrintWriter out = response.getWriter();
+          HttpSession session=request.getSession();  
+            session.invalidate();  
+              
+            out.print("You are successfully logged out!");  
+              
+            out.close();  
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
