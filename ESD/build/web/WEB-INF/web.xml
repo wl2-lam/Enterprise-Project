@@ -20,6 +20,10 @@
         <servlet-name>Claim</servlet-name>
         <servlet-class>Controller.Claim_servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>log_out</servlet-name>
+        <servlet-class>Controller.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Payment_Servlet</servlet-name>
         <url-pattern>/payment</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>Claim</servlet-name>
         <url-pattern>/Claim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>log_out</servlet-name>
+        <url-pattern>/log_out</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

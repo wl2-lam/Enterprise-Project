@@ -66,6 +66,7 @@ body {
   <a href="claims&payments.html">claims & payments</a>
   <a href="paymentdetails.html">Payment Details</a> 
   <a href="personaldetail.html">personal details</a>
+  <a href="LogoutServlet">Logout</a>
   
 
 </div>
