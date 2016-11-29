@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import com.sun.corba.se.pept.transport.Connection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,8 +15,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.member_request;
+import model.JdbcQry;
 import java.sql.*;
+import javax.servlet.http.HttpSession;
+import model.Member;
+
 /**
  *
  * @author wl2-lam
@@ -33,33 +35,40 @@ public class login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private String username;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String username=request.getParameter("username");
-        String password=request.getParameter("password");
-        
-         
-        member_request j = new member_request();
-       
-        boolean b = j.validateLogin(username, password);
-        if (b==true) {
-            boolean a = j.checkAdmin(username);
-            if(a==true){
-             response.sendRedirect("home.html");
-        } else{
-                response.sendRedirect("home.html");
-            } }
-            else{
-              response.sendRedirect("error.html");
-        }
-       
-        
-        
-        
-    }
+        username = request.getParameter("username");
+        String password = request.getParameter("password");
+        JdbcQry j;
+        Member m = new Member();
+        j = new JdbcQry((Connection) request.getServletContext().getAttribute("connection"));
 
+        boolean b = j.idcheck(username, password);
+        
+        if (b == true) {
+            boolean a = j.checkAdmin(username);
+            m=j.getMember(username);
+            String status = m.getStatus();
+            if (a == true) {
+                response.sendRedirect("adminhome.jsp");
+                 HttpSession session=request.getSession();  
+        session.setAttribute("status",status);  
+            } else {
+                response.sendRedirect("home.jsp");
+                 HttpSession session=request.getSession();  
+        session.setAttribute("status",status);  
+            }
+        } else {
+            response.sendRedirect("error.jsp");
+        }
+
+    }
+public String getUsername(){
+    return this.username;
+}
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

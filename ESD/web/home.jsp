@@ -1,10 +1,3 @@
-<%-- 
-    Document   : adminhome
-    Created on : 16-Nov-2016, 14:17:48
-    Author     : wl2-lam
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <style>
@@ -73,9 +66,9 @@ body {
 
 <div id="Home">
 
-  <h2>Admin-Home</h2>
+  <h2>Home</h2>
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-  <p>THIS IS THE Admin HOME PAGE</p>
+  <p>THIS IS THE HOME PAGE</p>
 </div>
 
 <script>
@@ -94,4 +87,3 @@ function closeNav() {
      
 </body>
 </html> 
-

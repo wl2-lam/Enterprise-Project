@@ -34,12 +34,7 @@ public class NewServletListener implements ServletContextListener {
             sc.setAttribute("error", e);
         }
         sc.setAttribute("connection", conn);
-        JdbcQry j = new JdbcQry(conn);
-     try {
-         j.connect();
-     } catch (SQLException ex) {
-         Logger.getLogger(NewServletListener.class.getName()).log(Level.SEVERE, null, ex);
-     }
+        
        
     }
 
