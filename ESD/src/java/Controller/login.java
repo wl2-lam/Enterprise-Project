@@ -50,10 +50,10 @@ public class login extends HttpServlet {
             if(a==true){
              response.sendRedirect("adminhome.jsp");
         } else{
-                response.sendRedirect("home.html");
+                response.sendRedirect("home.jsp");
             } }
             else{
-              response.sendRedirect("error.html");
+              response.sendRedirect("error.jsp");
         }
        
         

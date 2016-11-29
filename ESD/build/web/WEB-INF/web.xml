@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>Claim</servlet-name>
-        <servlet-class>Controller.Claim</servlet-class>
+        <servlet-class>Controller.Claim_servlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Payment_Servlet</servlet-name>

@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/Controller/Claim.java</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/web/paymentdetails.html</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/Controller/NewServlet.java</file>
             <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/model/NewServletListener.java</file>
             <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/model/JdbcQry.java</file>
-            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/model/member_request.java</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/Controller/register.java</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/web/claims&amp;payments.html</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/Controller/Payment_Servlet.java</file>
+            <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/web/register.jsp</file>
             <file>file:/C:/Users/Tim%20Lam/Documents/NetBeansProjects/Enterprise-Project/ESD/src/java/Controller/login.java</file>
         </group>
     </open-files>

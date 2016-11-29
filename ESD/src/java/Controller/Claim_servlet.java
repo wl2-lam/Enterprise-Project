@@ -7,16 +7,18 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.Claim;
+import model.JdbcQry;
 /**
  *
  * @author wl2-lam
  */
-public class Claim extends HttpServlet {
+public class Claim_servlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +34,12 @@ public class Claim extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         float amount = Float.parseFloat(request.getParameter("amount"));
         String reason = request.getParameter("reason");
+        Claim c = new Claim();
+        c.setAmount(amount);
+        c.setRationale(reason);
+        JdbcQry j = new JdbcQry((Connection) request.getServletContext().getAttribute("connection"));
+        j.submitClaim(c);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -61,23 +61,18 @@ public class register extends HttpServlet {
         m.setAddress(address);     
         m.setName(name);
         boolean b = j.idExist(username);
-        if (b == false) {
+        if (b == true) {
             PrintWriter out = response.getWriter();
             out.print("Sorry the username has been taken");
+             out.println("<input type=\"button\" name =go back onclick=\"document.location.href = 'register.jsp'\" />");
         }else{
             j.registerMember(m, password);
-        }
+            response.sendRedirect("Login.jsp");
+                    
         
-//        JdbcQry j = new JdbcQry();
-//        if (j.exists(data[0])) {
-//            PrintWriter out = response.getWriter();
-//             out.print("Sorry the username has been taken"); 
-//        }else{
-//           j.insert(data);
-//           response.sendRedirect("home.html");
-//        }
+        
     }
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -115,6 +110,7 @@ public class register extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }
+
+
