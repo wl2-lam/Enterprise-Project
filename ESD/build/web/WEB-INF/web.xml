@@ -21,7 +21,7 @@
         <servlet-class>Controller.Claim_servlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>log_out</servlet-name>
+        <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>Controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -41,8 +41,8 @@
         <url-pattern>/Claim</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>log_out</servlet-name>
-        <url-pattern>/log_out</url-pattern>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

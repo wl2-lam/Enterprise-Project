@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="refresh" content="2;url=login.jsp" />
+        <meta http-equiv="refresh" content="2;url=Login.jsp" />
         <title>Authentication failed - a problem has occurred!</title>
     </head>
     <body>

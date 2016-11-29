@@ -31,15 +31,21 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-          HttpSession session=request.getSession();  
-            session.invalidate();  
-              
-            out.print("You are successfully logged out!");  
-              
-            out.close();  
+        HttpSession session=request.getSession();  
+            session.invalidate(); 
+         try (PrintWriter out = response.getWriter()) {          
+            
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>logged out</title>");   
+            out.println("<meta http-equiv=\"refresh\" content=\"2;url=Login.jsp\" />");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>you have suceessfully logged out</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -80,3 +86,4 @@ public class LogoutServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+
