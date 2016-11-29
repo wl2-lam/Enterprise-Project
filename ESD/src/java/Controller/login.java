@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import com.sun.corba.se.pept.transport.Connection;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.member_request;
+import model.JdbcQry;
 import java.sql.*;
 /**
  *
@@ -39,15 +39,16 @@ public class login extends HttpServlet {
         
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        
+        JdbcQry j;
+        j= new JdbcQry( (Connection) request.getServletContext().getAttribute("connection"));
          
-        member_request j = new member_request();
        
-        boolean b = j.validateLogin(username, password);
+       
+        boolean b = j.idcheck(username, password);
         if (b==true) {
             boolean a = j.checkAdmin(username);
             if(a==true){
-             response.sendRedirect("home.html");
+             response.sendRedirect("adminhome.jsp");
         } else{
                 response.sendRedirect("home.html");
             } }

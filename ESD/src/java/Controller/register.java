@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.JdbcQry;
-import model.member_request;
+//import model.member_request;
 import model.Member;
 import java.util.*;
 import java.text.ParseException;
@@ -41,7 +41,7 @@ public class register extends HttpServlet {
         Member m = new Member();
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
-        member_request j = new member_request();        
+        JdbcQry j= new JdbcQry( (Connection) request.getServletContext().getAttribute("connection"));       
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String address = request.getParameter("address");
